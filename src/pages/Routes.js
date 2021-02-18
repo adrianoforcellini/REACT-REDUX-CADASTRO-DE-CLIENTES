@@ -7,26 +7,20 @@ import store from "../store/index";
 import Clientes from "./Clientes";
 import Loginst from "./Loginst";
 
-function authenticated () {
- let state = store.getState()
-    if ( state.Authenticated === true) {
-      return true
-    
-    }else{
-      return false
+function authenticated() {
+  let state = store.getState();
+  if (state.Authenticated === true) {
+    return true;
   }
-}
- 
+    return false;
+  }
+
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      authenticated() ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{ pathname: "/loginst"}} />
-      )
+      authenticated() ? <Component {...props} /> : <Redirect to={{ pathname: "/loginst" }} />
     }
   />
 );
@@ -34,17 +28,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 export default class Routes extends Component {
   render() {
     return (
-    <BrowserRouter>
-    <Switch>
-      <Route path="/login" component={Login} />
-      <PrivateRoute path="/clientes" component={ Clientes }  />
-      <Route exact path="/" component={Home} />
-      <Route exact path="/loginst" component={Loginst} />
-      <Route component={NotFound} />
-    </Switch>
-  </BrowserRouter>
-   );
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <PrivateRoute path="/clientes" component={Clientes} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/loginst" component={Loginst} />
+          <Route component={NotFound} />
+        </Switch>
+      </BrowserRouter>
+    );
   }
 }
-
-
