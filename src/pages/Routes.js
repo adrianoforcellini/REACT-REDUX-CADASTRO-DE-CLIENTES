@@ -12,13 +12,11 @@ function authenticated() {
   if (state.Authenticated === true) {
     return true;
   }
-    return false;
-  }
+  return false;
+}
 
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component }) => (
   <Route
-    {...rest}
     render={(props) =>
       authenticated() ? <Component {...props} /> : <Redirect to={{ pathname: "/loginst" }} />
     }
