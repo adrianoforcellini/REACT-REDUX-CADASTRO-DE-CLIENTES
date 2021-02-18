@@ -1,21 +1,20 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Clientes from './pages/Clientes';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import NotFound from './pages/404';
+import React from "react";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/login" component={ Login } />
-        <Route path="/clientes" component={ Clientes } />
-        <Route exact path="/" component={ Home } />
-        <Route component={ NotFound } />
-      </Switch>
-    </BrowserRouter>
-  );
-}
+import Routes from "./pages/Routes";
+
+// const PrivateRoute = ({ component: { Clientes, ...rest } }) => {
+//   <Route
+//     {...rest}
+//     render={(props) =>
+//       authenticated() ? (
+//         <Clientes {...props} />
+//       ) : (
+//         <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+//       )
+//     }
+//   />;
+// };
+
+const App = () => <Routes />
 
 export default App;
