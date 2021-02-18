@@ -1,20 +1,25 @@
-const INITIAL_STATE = {
+const i = {
   Email: "",
   Senha: "",
   Authenticated: false,
 };
 
-export default function reducer(state = INITIAL_STATE, action) {
+export default function reducer(state = i, action) {
   switch (action.type) {
     case "CHANGE_EMAIL":
-      return { ...state, Email: action.Email };
+     state.Email =  action.Email;
+     return state
+     
     case "CHANGE_SENHA":
-      return { ...state, Senha: action.Senha };
-    case "AUTHENTICATED":
-      return { ...state, Authenticated: true };
-      case "LOGOUT":
-      return { ...state, Authenticated: false };
-    default:
+      state.Senha =  action.Senha 
+      return state
+      case "AUTHENTICATED":
+      state.Authenticated = true
+      return state
+     case "LOGOUT":
+        state.Authenticated= false 
+        return state
+        default:
       return state;
   }
 }
