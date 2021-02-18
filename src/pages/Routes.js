@@ -4,11 +4,8 @@ import Home from "./Home";
 import Login from "./Login";
 import NotFound from "./404";
 import store from "../store/index";
-import { connect } from "react-redux";
-// import { authenticateda } from "./Login";
 import Clientes from "./Clientes";
 import Loginst from "./Loginst";
-// import retorno from "./Login";
 
 function authenticated () {
  let state = store.getState()
@@ -34,7 +31,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-class Routes extends Component {
+export default class Routes extends Component {
   render() {
     return (
     <BrowserRouter>
@@ -50,13 +47,4 @@ class Routes extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  Email: state.Email,  
-  Senha: state.Senha,
-  Authenticated: state.Authenticated,
-  Logout : state.Authenticated,
-
-});
-
-export default connect(mapStateToProps)(Routes);
 

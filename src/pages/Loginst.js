@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 
-class Loginst extends Component {
+export default class Loginst extends Component {
   render() {
     return (
       <div className="center">
@@ -13,12 +12,4 @@ class Loginst extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  Email: state.Email,  
-  Senha: state.Senha,
-  Authenticated: state.Authenticated,
-  Logout : state.Authenticated,
 
-});
-
-export default connect(mapStateToProps)(Loginst);
