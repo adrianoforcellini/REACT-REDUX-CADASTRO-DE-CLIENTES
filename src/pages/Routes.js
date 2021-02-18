@@ -28,7 +28,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       authenticated() ? (
         <Component {...props} />
       ) : (
-        <Redirect to={{ pathname: "/loginst", state: { from: props.location } }} />
+        <Redirect to={{ pathname: "/loginst"}} />
       )
     }
   />
@@ -40,7 +40,7 @@ class Routes extends Component {
     <BrowserRouter>
     <Switch>
       <Route path="/login" component={Login} />
-      <PrivateRoute path="/clientes" component={ Clientes }  props={mapStateToProps} />
+      <PrivateRoute path="/clientes" component={ Clientes }  />
       <Route exact path="/" component={Home} />
       <Route exact path="/loginst" component={Loginst} />
       <Route component={NotFound} />
@@ -60,10 +60,3 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps)(Routes);
 
-// const mapDispatchToProps = (dispatch) => ({
-//   Email: (Email) => dispatch({ type: "CHANGE_EMAIL", Email }),
-//   Senha: (Senha) => dispatch({ type: "CHANGE_SENHA", Senha }),
-//   Authenticated: (Authenticated) => dispatch({ type: "AUTHENTICATED", Authenticated }),
-//   Logout: (Authenticated) => dispatch({ type: "LOGOUT", Authenticated }),
-
-// });

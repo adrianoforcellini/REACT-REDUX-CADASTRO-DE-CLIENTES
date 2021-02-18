@@ -1,35 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import store from "../store/index";
+import { Link } from 'react-router-dom';
 
-// var retorno = false;
 class Login extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   email: "",
-    //   senha: "",
-    // };
     this.clickOnButton = this.clickOnButton.bind(this);
-    // this.aauthenticated = this.aauthenticated.bind(this);
   }
 
-  // handleChange(e) {
-  //   const target = e.target;
-  //   const name = target.name;
-  //   this.setState({
-  //     [name]: target.value,
-  //   });
-  // }
-
-  // aauthenticated() {
-  //   if (this.state.senha === "1" && this.state.email === "1") {
-  //     retorno = true;
-  //   } else {
-  //     console.log(retorno);
-
-  //   }
-  // }
 
   clickOnButton() {
     const state = store.getState();
@@ -63,8 +42,8 @@ class Login extends Component {
             <button className="button" type="button" onClick={() => this.clickOnButton()}> 
                          LOGIN
             </button >
-            <button onClick={() => redirect()}>REDIRECT</button>
-          </div>
+            <Link to="/clientes">REDIRECT \o/</Link>  
+                    </div>
         </main>
         <footer className="footer"></footer>
       </div>
@@ -73,44 +52,6 @@ class Login extends Component {
 }
 
  
-
-// export function authenticated() {
-//   if (retorno === true){
-//   console.log('senha certa')
-//   return true;
-
-//   }else{
-//     console.log('senha errada...')
-//   return false;
-// }
-// }
-export let retorno = false
-// export  function authenticateda(){
-// const state = store.getState();
-// if ( state.Email === "aa" && state.Senha ==="aa"){
-//  console.log('senha certa');
-//  retorno = true;
-//  console.log(retorno)
-// }else{
-// console.log('usuario ou senha errados')
-// return false
-// }
-// }
-
-function redirect (){
-  window.location.href = "http://localhost:3000/clientes";
-
-}
-
-// export async function authenticated(){
-//   await authenticateda();
-// if (retorno === true){
-//   console.log(retorno)
-//   return true
-// }
-// console.log(retorno)
-// return false
-// }
 
 const mapStateToProps = (state) => ({
     Email: state.Email,  
