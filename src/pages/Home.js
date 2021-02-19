@@ -8,7 +8,7 @@ class Home extends Component {
         <main className="main">
           <div className="form">
             <h1>Cadastro de Clientes</h1>
-            
+
             <button className="button">
               <Link to={"/login"}>FAZER LOGIN</Link>
             </button>

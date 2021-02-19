@@ -3,24 +3,13 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
 import NotFound from "./404";
-import store from "../store/index";
-import Clientes from "./Clientes";
+import Cadastros from "./Cadastros";
 import Loginst from "./Loginst";
-
-function authenticated() {
-  let state = store.getState();
-  if (state.Authenticated === true) {
-    return true;
-  }
-  return false;
-}
+import ClientesCadastrados from "./ClientesCadastrados";
+import { authenticated } from "./Login";
 
 const PrivateRoute = ({ component: Component }) => (
-  <Route
-    render={(props) =>
-      authenticated() ? <Component {...props} /> : <Redirect to={{ pathname: "/loginst" }} />
-    }
-  />
+  <Route render={() => (authenticated() ? <Component /> : <Redirect to="/loginst" />)} />
 );
 
 export default class Routes extends Component {
@@ -29,9 +18,10 @@ export default class Routes extends Component {
       <BrowserRouter>
         <Switch>
           <Route path="/login" component={Login} />
-          <PrivateRoute path="/clientes" component={Clientes} />
+          <PrivateRoute path="/cadastros" component={Cadastros} />
           <Route exact path="/" component={Home} />
           <Route exact path="/loginst" component={Loginst} />
+          <Route exact path="/cadastrados" component={ClientesCadastrados} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import store from "../store/index";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -9,16 +9,15 @@ class Login extends Component {
     this.clickOnButton = this.clickOnButton.bind(this);
   }
 
-
   clickOnButton() {
     const state = store.getState();
-      if (state.Senha === 'aa' && state.Email==="aa") {
-        this.props.Authenticated()
-      }else{
-      this.props.Logout()
-      }
+    if (state.Senha === "aa" && state.Email === "aa") {
+      this.props.Authenticated();
+    } else {
+      this.props.Logout();
     }
-    
+  }
+
   render() {
     return (
       <div className="login">
@@ -39,11 +38,13 @@ class Login extends Component {
               placeholder="senha"
               onChange={({ target }) => this.props.Senha(target.value)}
             />
-            <button className="button" type="button" onClick={() => this.clickOnButton()}> 
-                         LOGIN
-            </button >
-            <Link to="/clientes">REDIRECT \o/</Link>  
-                    </div>
+            <button className="button" type="button" onClick={() => this.clickOnButton()}>
+              AUTENTICAR
+            </button>
+            <button className="button" type="button">
+              <Link to="/cadastros">Realizar Cadastros \o/</Link>
+            </button>
+          </div>
         </main>
         <footer className="footer"></footer>
       </div>
@@ -51,23 +52,26 @@ class Login extends Component {
   }
 }
 
- 
+export function authenticated() {
+  let state = store.getState();
+  if (state.Authenticated === true) {
+    return true;
+  }
+  return false;
+}
 
 const mapStateToProps = (state) => ({
-    Email: state.Email,  
-    Senha: state.Senha,
-    Authenticated: state.Authenticated,
-    Logout : state.Authenticated,
-
+  Email: state.Email,
+  Senha: state.Senha,
+  Authenticated: state.Authenticated,
+  Logout: state.Authenticated,
 });
 
-
 const mapDispatchToProps = (dispatch) => ({
-    Email: (Email) => dispatch({ type: "CHANGE_EMAIL", Email }),
-    Senha: (Senha) => dispatch({ type: "CHANGE_SENHA", Senha }),
-    Authenticated: (Authenticated) => dispatch({ type: "AUTHENTICATED", Authenticated }),
-    Logout: (Authenticated) => dispatch({ type: "LOGOUT", Authenticated }),
-
+  Email: (Email) => dispatch({ type: "CHANGE_EMAIL", Email }),
+  Senha: (Senha) => dispatch({ type: "CHANGE_SENHA", Senha }),
+  Authenticated: (Authenticated) => dispatch({ type: "AUTHENTICATED", Authenticated }),
+  Logout: (Authenticated) => dispatch({ type: "LOGOUT", Authenticated }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

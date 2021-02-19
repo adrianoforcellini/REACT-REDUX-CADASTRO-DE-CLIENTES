@@ -11,5 +11,3 @@ export default class Loginst extends Component {
     );
   }
 }
-
-
